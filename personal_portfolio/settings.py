@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6^$s_bpjui05n=(e=v=v2bwt$e@g&1=cd3@2o7@k8utodns&y_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+ALLOWED_HOSTS = ['sidvenkatraman.pythonanywhere.com']
 
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -123,6 +123,12 @@ STATIC_URL = '/static/'
 
 MEDIA_URL ='/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+try:
+    from .local_settings import *
+except ImportError:
+    print("Looks like no local file. You must be on production")
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
