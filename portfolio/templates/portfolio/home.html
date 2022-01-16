@@ -6,28 +6,48 @@
 
     {% load static %}
 
-      <img src="{% static 'portfolio/ZLHeadshotCircleBrighter.png' %}" height = 350 width=350 style="position:absolute; left:1100px; top:200px;">
+      <img src="{% static 'portfolio/ZLHeadshotCircleBrighter.png' %}" height = 350 width=350 style="position:absolute; left:1100px; top:140px;">
 
     <h1  class="font-weight-bold" style="font-size:48px; margin-top: 200px; position:relative; left: 300px;"> Siddharth Venkatraman</h1>
     <h2 class="font-weight:bold;" style="font-size:24px; position:relative; left: 301px;"> Texas A&M Computer Science </h2>
-    <h2 class="font-weight:bold;" style=" margin-top:30px; font-size:16px; position:relative; left: 302px;">
+    <span class="badge rounded-pill bg-primary" style="text-align:left; margin-left:302px; position:relative;">Python</span>
+    <span class="badge rounded-pill bg-primary" style="position:relative;"> Java</span>
+    <span class="badge rounded-pill bg-primary" style="position:relative; "> C++</span>
+    <span class="badge rounded-pill bg-primary" style="position:relative; "> SQL</span>
+    <span class="badge rounded-pill bg-primary" style="position:relative; "> Tableau</span>
+    <span class="badge rounded-pill bg-primary" style="position:relative; "> Django</span>
+    <h2 class="font-weight:bold;" style=" margin-top:30px; font-size:16px; position:relative; left: 302px; bottom:18px">
       <img src="{% static 'portfolio/emailIcon.png' %}" height =20 width = 20>
       <a href = "mailto: sid.venkatraman17@gmail.com" style="text-decoration:none; color:#000000">
       sid.venkatraman17@gmail.com
       </a>
      </h2>
-    <h2 class="font-weight:bold;" style="font-size:16px; position:relative; left: 302px;">
+    <h2 class="font-weight:bold;" style="font-size:16px; position:relative; left: 302px;bottom:18px">
       <img src="{% static 'portfolio/LinkedinIcon.png' %}" height=20 width=20>
       <a href="https://www.linkedin.com/in/siddharth-venkatraman-b8582a1b4/" target="_blank" style="text-decoration:none; color:#000000"> Siddharth Venkatraman </a>
     </h2>
-    <img src="{% static 'portfolio/laptop.png' %}" height=250 width=250 style="position:absolute; top:700px; left:350px;">
-    <h2 class="font-weight:bold;" style="font-size:36px; text-align:left; margin-top:350px; margin-left:1000px;"> About Me </h2>
-    <p class="font-weight:bold;" style="text-align:left; margin-left:1000px;"> Hello, I'm Siddharth, a Computer Science student at Texas A&M University. </p>
-    <p class="font-weight:bold;" style="text-align:left; margin-left:1000px; position:relative; bottom:18px;"> I have experience in working with </p>
-    <span class="badge rounded-pill bg-primary" style="text-align:left; margin-left:1000px; position:relative; bottom:18px;">Python</span>
-    <span class="badge rounded-pill bg-primary" style="position:relative; bottom:18px;"> Java</span>
-    <span class="badge rounded-pill bg-primary" style="position:relative; bottom:18px;"> Html</span>
-    <span class="badge rounded-pill bg-primary" style="position:relative; bottom:18px;"> Django</span>
-    <span class="badge rounded-pill bg-primary" style="position:relative; bottom:18px;"> Pandas library</span>
-    <span class="badge rounded-pill bg-primary" style="position:relative; bottom:18px;"> Bootstrap</span>
+    <br>
+    <br>
+    <h2 class="mt-5" style= "position:relative; left: 40px;">Portfolio</h2>
+    <hr style= "position:relative; left: 40px;">
+    <div class="row">
+  {% for project in projects %}
+  <div class="col-lg-4 col-md-6" style="position relative; left:40px">
+
+    {% if project.url %}
+    <a href="{{ project.url }}">
+      <img src="{{ project.image.url }}" class="img-fluid mb-2" height = 300 width = 300 style="position:relative; left: 80px;">
+    </a>
+    {% else %}
+
+    <img src="{{ project.image.url }}" class="img-fluid mb-2">
+    {% endif %}
+    <h3 style= "position:relative; left: 40px;">{{ project.title }}</h3>
+    <p>{{ project.description }}</p>
+
+  </div>
+  {% endfor %}
+</div>
+
+
 {% endblock %}
